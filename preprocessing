@@ -1,2 +1,38 @@
 import pandas as pd
 import numpy as np
+from sklearn.model_selection import train_test_split
+
+# Load the dataset pulled from GitHub
+df = pd.read_csv("exoplanet_archive_dataset.csv", comment='#')
+
+# Brief data audit
+print("Raw data shape:", df.shape)
+print("Missing values check:")
+print(df.isnull().sum())
+
+# Group each system together and count the number of planets in each system
+df_systems = df.groupby('hostname').first().reset_index()
+
+# Remove missing values from the dataset
+features = ['sy_snum', 'st_teff', 'st_rad', 'st_mass', 'st_met', 'st_logg']
+df_clean = df_systems.dropna(subset=features).copy()
+
+# Create target variable: 1 if system has more than one planet, 0 otherwise
+df_clean['target'] = np.where(df_clean['sy_pnum'] >= 2, 1, 0)
+
+# Split the dataset into input parameters and target variable
+X = df_clean[features]
+y = df_clean['target']
+
+# Split train and test stratifying by y, 80/20 split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
+print("\nCleaned Data")
+print("Clean systems left:", len(df_clean))
+print("X_train shape:", X_train.shape)
+print("X_test shape:", X_test.shape)
+
+print("\nClass counts in training:")
+print(y_train.value_counts())
+print("\nClass percentages:")
+print(y_train.value_counts(normalize=True))
