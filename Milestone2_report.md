@@ -54,11 +54,11 @@ False Negatives: 118
 True Negatives: 551  
   
 ## Dataset choice and target variable setup.  
-Source: The Planetary Systems Composite Parameters (PSCompPars) table from the official NASA Exoplanet Archive.
+Source: The Planetary Systems Composite Parameters (PSCompPars) table from the official NASA Exoplanet Archive.  
 Inupt features: 6 physical stellar properties (`number of stars: sy_snum`, `effective temperature: st_teff`,
- `stellar radius: st_rad`, `stellar mass: st_mass`, `stellar metallicity: st_met`, `surface gravity: st_logg`).
-Target variable: I grouped the dataset into each unique stellar system, then i counted the number of planets in       each system and set the target variable = 0 if there is one planet in the system and set the target variable = 1 if there is more than 1 planet. The target distribution is heavily skewed to systems with 1 planet. 
-Train/test split: I chose an 80/20 split to maximise the data my model can train on while keeping enough data to evaluate its performance well. And i stratified by the target variable to retain class proportions in the train and test sets.
+ `stellar radius: st_rad`, `stellar mass: st_mass`, `stellar metallicity: st_met`, `surface gravity: st_logg`).  
+Target variable: I grouped the dataset into each unique stellar system, then i counted the number of planets in each system and set the target variable = 0 if there is one planet in the system and set the target variable = 1 if there is more than 1 planet. The target distribution is heavily skewed to systems with 1 planet.   
+Train/test split: I chose an 80/20 split to maximise the data my model can train on while keeping enough data to evaluate its performance well. And i stratified by the target variable to retain class proportions in the train and test sets.  
 
 ## Assitance Declaration
 I used GitHub CoPilot in vscode as an assitant for the project milestone. I used it to help with pandas and scikit-learn method syntax. All code has been checked and verified by me to ensure it works
