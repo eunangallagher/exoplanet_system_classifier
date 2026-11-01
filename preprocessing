@@ -57,7 +57,7 @@ cm = confusion_matrix(y_test, y_pred_baseline)
 print("Confusion Matrix:")
 print(cm)
 # print  true positives, false positives, false negatives, true negatives
-tp, fp, fn, tn = cm.ravel()
+tn, fp, fn, tp = cm.ravel()
 print("True Positives:", tp)
 print("False Positives:", fp)
 print("False Negatives:", fn)
