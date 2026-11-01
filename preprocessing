@@ -1,6 +1,15 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+from sklearn.dummy import DummyClassifier
+from sklearn.metrics import accuracy_score, confusion_matrix
+
+# Module versions
+print("\nModule Versions:")
+print("Pandas version:", pd.__version__)
+print("NumPy version:", np.__version__)
+print("Scikit-learn version:", __import__('sklearn').__version__)
+print("\n\n")
 
 # Load the dataset pulled from GitHub
 df = pd.read_csv("exoplanet_archive_dataset.csv", comment='#')
@@ -36,3 +45,14 @@ print("\nClass counts in training:")
 print(y_train.value_counts())
 print("\nClass percentages:")
 print(y_train.value_counts(normalize=True))
+
+# Train a dummy classifier to establish a baseline
+baseline = DummyClassifier(strategy="most_frequent")
+baseline.fit(X_train, y_train)
+y_pred_baseline = baseline.predict(X_test)
+print("\nDummy Classifier Performance:")
+print("Accuracy:", accuracy_score(y_test, y_pred_baseline))
+# confusion matrix
+cm = confusion_matrix(y_test, y_pred_baseline)
+print("Confusion Matrix:")
+print(cm)
