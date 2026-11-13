@@ -2,8 +2,14 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.dummy import DummyClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix
-
+from sklearn.metrics import (
+    accuracy_score, 
+    confusion_matrix, 
+    precision_score, 
+    recall_score, 
+    f1_score, 
+    balanced_accuracy_score
+)
 from preprocessing import X_train, X_test, y_train, y_test
 
 # Train a dummy classifier to establish a baseline
@@ -22,3 +28,9 @@ print("True Positives:", tp)
 print("False Positives:", fp)
 print("False Negatives:", fn)
 print("True Negatives:", tn)
+
+# print classification metrics
+print("Balanced Accuracy:", balanced_accuracy_score(y_test, y_pred_baseline))
+print("Precision (Multi-planet):", precision_score(y_test, y_pred_baseline))
+print("Recall (Multi-planet):", recall_score(y_test, y_pred_baseline))
+print("F1-Score (Multi-planet):", f1_score(y_test, y_pred_baseline))

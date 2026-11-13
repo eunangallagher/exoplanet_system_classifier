@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.dummy import DummyClassifier
 from sklearn.metrics import (
     accuracy_score, 
     confusion_matrix, 
@@ -32,7 +31,7 @@ print("False Positives:", fp_dt)
 print("False Negatives:", fn_dt)
 print("True Negatives:", tn_dt)
 
-# Add these lines below your confusion matrix printout for Decision Tree:
+# print classification metrics
 print("Balanced Accuracy:", balanced_accuracy_score(y_test, y_pred_dt))
 print("Precision (Multi-planet):", precision_score(y_test, y_pred_dt))
 print("Recall (Multi-planet):", recall_score(y_test, y_pred_dt))
