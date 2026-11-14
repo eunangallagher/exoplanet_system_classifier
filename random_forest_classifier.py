@@ -1,7 +1,4 @@
-import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.dummy import DummyClassifier
+import matplotlib.pyplot as plt
 from sklearn.metrics import (
     accuracy_score, 
     confusion_matrix, 
@@ -37,3 +34,14 @@ print("Balanced Accuracy:", balanced_accuracy_score(y_test, y_pred_rf))
 print("Precision (Multi-planet):", precision_score(y_test, y_pred_rf))
 print("Recall (Multi-planet):", recall_score(y_test, y_pred_rf))
 print("F1-Score (Multi-planet):", f1_score(y_test, y_pred_rf))
+
+importances = rf_classifier.feature_importances_
+feature_names = X_train.columns
+
+plt.figure(figsize=(8, 5))
+plt.barh(feature_names, importances, color='steelblue')
+plt.xlabel("Importance Score")
+plt.title("Stellar Feature Importance (Random Forest)")
+plt.tight_layout()
+plt.savefig("feature_importance.png")
+print("\nSaved visualisation to feature_importance.png")
