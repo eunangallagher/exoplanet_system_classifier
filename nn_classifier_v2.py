@@ -1,4 +1,5 @@
 from sklearn.utils import resample
+import pandas as pd
 from sklearn.metrics import (
     accuracy_score, 
     confusion_matrix, 
@@ -34,11 +35,11 @@ nn_pipeline = make_pipeline(
 )
 
 nn_pipeline.fit(X_train_bal, y_train_bal)
-y_pred_nn = nn_pipeline.predict(X_test)
+y_pred_nn_v2 = nn_pipeline.predict(X_test)
 
 print("\nNeural Network (MLP) with Balanced Data Performance:")
-print("Accuracy:", accuracy_score(y_test, y_pred_nn))
-cm_nn = confusion_matrix(y_test, y_pred_nn)
+print("Accuracy:", accuracy_score(y_test, y_pred_nn_v2))
+cm_nn = confusion_matrix(y_test, y_pred_nn_v2)
 print("Confusion Matrix:")
 print(cm_nn)
 
@@ -47,7 +48,7 @@ print("True Positives:", tp_nn)
 print("False Positives:", fp_nn)
 print("False Negatives:", fn_nn)
 print("True Negatives:", tn_nn)
-print("Balanced Accuracy:", balanced_accuracy_score(y_test, y_pred_nn))
-print("Precision (Multi-planet):", precision_score(y_test, y_pred_nn))
-print("Recall (Multi-planet):", recall_score(y_test, y_pred_nn))
-print("F1-Score (Multi-planet):", f1_score(y_test, y_pred_nn))
+print("Balanced Accuracy:", balanced_accuracy_score(y_test, y_pred_nn_v2))
+print("Precision (Multi-planet):", precision_score(y_test, y_pred_nn_v2))
+print("Recall (Multi-planet):", recall_score(y_test, y_pred_nn_v2))
+print("F1-Score (Multi-planet):", f1_score(y_test, y_pred_nn_v2))
