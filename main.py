@@ -6,14 +6,13 @@ from sklearn.metrics import (
     f1_score, 
     balanced_accuracy_score
 )
-from preprocessing import X_train, X_test, y_train, y_test
+from preprocessing import X_train, y_test
 from utils import plot_feature_importance, plot_model_comparison
 from random_forest_classifier import rf_classifier, y_pred_rf
 from decision_tree_classifier import y_pred_dt
 from dummy_classifier import  y_pred_baseline
 from neural_network_classifier import  y_pred_nn
 from nn_classifier_v2 import  y_pred_nn_v2
-from gradient_boost_classifier import  y_pred_hgb
 
 # Save feature importance chart
 plot_feature_importance(rf_classifier, X_train.columns)
@@ -49,12 +48,6 @@ results = {
         precision_score(y_test, y_pred_nn_v2, zero_division=0),
         recall_score(y_test, y_pred_nn_v2, zero_division=0),
         f1_score(y_test, y_pred_nn_v2, zero_division=0)
-    ],
-    "Gradient Boosting": [
-        balanced_accuracy_score(y_test, y_pred_hgb),
-        precision_score(y_test, y_pred_hgb, zero_division=0),
-        recall_score(y_test, y_pred_hgb, zero_division=0),
-        f1_score(y_test, y_pred_hgb, zero_division=0)
     ]
 }
 

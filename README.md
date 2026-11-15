@@ -7,5 +7,5 @@ whether a multi-planet or single-planet system orbits a star.
 1. Clone or download this folder
 2. Open terminal in root directory of this folder
 3. Run "pip install -r requirements.txt" to install packages
-4. Run "python preprocessing.py" to run source code
+4. Run "python main.py" to run each model and get the metrics and graphs
 
